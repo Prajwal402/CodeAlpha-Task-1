@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fc5656;
+        }
+
+        .gallery-container {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumbnail.active {
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            outline: 2px solid rgb(5, 22, 108);
+            outline-style: groove;
+        }
+        h1{
+            margin-bottom: 500px;
+        }
+    </style>
+</head>
+</body>
+<h1>MY PERSONAL IMAGE GALLRY</h1>
+<div class="gallery-container">
+    <img id="main-image" class="main-image" src="p2.jpg" alt="Main Image">
+
+    <div class="thumbnail-container">
+        <img class="thumbnail active" src="i1.jpg" alt="Thumbnail 1" onclick="changeImage(this)">
+        <img class="thumbnail" src="l.jpg" alt="Thumbnail 2" onclick="changeImage(this)">
+        <img class="thumbnail" src="i3.jpg" alt="Thumbnail 3" onclick="changeImage(this)">
+        <img class="thumbnail" src="pp.jpg" alt="Thumbnail 4" onclick="changeImage(this)">
+        <img class="thumbnail" src="OIP (1).jpeg" alt="Thumbnail 5" onclick="changeImage(this)">
+    </div>
+</div>
+
+<script>
+    function changeImage(thumbnail) {
+        // Get the main image element
+        const mainImage = document.getElementById('main-image');
+
+        // Update the source of the main image
+        mainImage.src = thumbnail.src;
+
+        // Remove active class from all thumbnails
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+        // Add active class to the clicked thumbnail
+        thumbnail.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
